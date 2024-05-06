@@ -1,0 +1,28 @@
+services:
+  database:
+    build:
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+      - MIGRATION=${MIGRATION}
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+  init:
+    build: 
+      context: ./filldata
+      dockerfile: Dockerfile
+    depends_on:
+      - database
+    command: >
+      /bin/sh -c "/wait-for-it.sh database:5432 -- python fillinit.py"
+    env_file:
+      - .env
+
+volumes:
+  postgres-db:

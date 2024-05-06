@@ -1,0 +1,6 @@
+CREATE TABLE planes (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    model VARCHAR(255) NOT NULL,
+    capacity INTEGER NOT NULL
+);
