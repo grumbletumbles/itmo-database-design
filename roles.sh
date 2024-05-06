@@ -26,6 +26,3 @@ for user in "${users[@]}"; do
     psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "CREATE USER $user;"
     psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "GRANT admin TO $user;"
 done
-
-psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "REVOKE ALL PRIVILEGES ON DATABASE $POSTGRES_DB FROM PUBLIC;"
-psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "REVOKE ALL ON SCHEMA public FROM PUBLIC;"
