@@ -1,4 +1,4 @@
-CREATE TABLE flights (
+CREATE TABLE IF NOT EXISTS flights (
     id SERIAL PRIMARY KEY,
     from_airport_id INTEGER NOT NULL REFERENCES airports(id),
     to_airport_id INTEGER NOT NULL REFERENCES airports(id),

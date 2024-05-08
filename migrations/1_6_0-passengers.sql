@@ -1,4 +1,4 @@
-CREATE TABLE passengers (
+CREATE TABLE IF NOT EXISTS passengers (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     surname VARCHAR(255) NOT NULL,

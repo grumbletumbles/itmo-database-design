@@ -1,0 +1,9 @@
+DO
+$do$
+BEGIN
+   GRANT SELECT ON TABLE public.flights TO analytic;
+EXCEPTION
+   WHEN undefined_table THEN
+      RAISE NOTICE 'The table public.flights does not exist.';
+END
+$do$;
